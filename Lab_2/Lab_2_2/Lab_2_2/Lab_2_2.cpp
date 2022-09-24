@@ -1,19 +1,24 @@
 ﻿#include <iostream>
 #include <string>
 
+//Функция для преобразования номера снилса
+std::string NumberAdapter(std::string number) {
+    return number.substr(0, 3) + number.substr(4, 3) + number.substr(8, 3);
+}
+
 //Функция определения является ли номер валдиным
-bool IsValid(std::string snils)
+bool IsValid(std::string actual_number, std::string expected_sum)
 {
-    std::string actual_number = snils.substr(0, 9);
-    std::string expected_sum = snils.substr(9, 10);
+    int actual_sum = (actual_number[0] - 48) * 9 + (actual_number[1] - 48) * 8; 
 
-    int actual_sum = (snils[0] - 48) * 9 + (snils[1] - 48) * 8;
-
+    //Проверка номера
     for (int i = 2; i < 9; i++) {
-        actual_sum += (snils[i] - 48) * (9 - i);
-        if (snils[i] == snils[i - 1] && snils[i] == snils[i - 2])
+        actual_sum += (actual_number[i] - 48) * (9 - i);
+        if (actual_number[i] == actual_number[i - 1] && actual_number[i] == actual_number[i - 2])
             return false;
     }
+
+    //Проверка контрольной суммы
     switch (actual_sum % 101) {
         case 0:
             if(expected_sum == "00") return true;
@@ -28,16 +33,15 @@ bool IsValid(std::string snils)
     return false;
 }
 
-
 int main()
 {
     system("chcp 1251"); //Устанавливаем кодировку
-    std::string number;
+    std::string number, sum;
 
-    std::cout << "Пожалуйста, введите номер СНИЛСа:\n";
+    std::cout << "Пожалуйста, введите номер Вашего СНИЛСа:\n";
 
-    std::cin >> number;
+    std::cin >> number >> sum;
 
-    if (IsValid(number)) std::cout << "Номер валидный!\n";
+    if (IsValid(NumberAdapter(number), sum)) std::cout << "Номер валидный!\n";
     else std::cout << "Номер не валидный!\n";
 }

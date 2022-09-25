@@ -6,7 +6,7 @@ std::string NumberAdapter(std::string number) {
     return number.substr(0, 3) + number.substr(4, 3) + number.substr(8, 3);
 }
 
-//Функция определения является ли номер валдиным
+//Функция определения является ли номер валидным
 bool IsValid(std::string actual_number, std::string expected_sum)
 {
     int actual_sum = (actual_number[0] - 48) * 9 + (actual_number[1] - 48) * 8; 

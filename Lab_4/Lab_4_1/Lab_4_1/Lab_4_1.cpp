@@ -13,7 +13,7 @@ int MyRoot(double a, double b, double c, double &x1, double &x2) {
         x2 = (-b) / (2 * a);
         return 0;
     }
-    else return 0;
+    else return -1;
 }
 
 int main()

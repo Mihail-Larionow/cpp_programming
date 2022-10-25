@@ -136,8 +136,6 @@ int main()
 {
     const int n = 10;
     int a[n];
-    const int n = 10;
-    int a[n];
     for (int i = 0; i < n; i++)
     {
         std::cout << "mas[" << i << "]=";

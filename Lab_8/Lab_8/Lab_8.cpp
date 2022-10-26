@@ -51,7 +51,7 @@ int main()
     std::cout<< "\n";
     Time time3;
     time3.Sum(time1, time2);
-    std::cout << "Прибавляем time2 к time1:\nчасов: ";
+    std::cout << "Прибавляем time2 к time1: ";
     time3.Show();
 
     return 0;
